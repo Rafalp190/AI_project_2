@@ -55,3 +55,11 @@ def classify_messages(message_array, prob_dict):
 		classified.append(m_class)
 
 	return classified 
+
+def prediction_error(theoretical, experimental) :
+	positives = 0
+	for i in range(len(theoretical)):
+		if theoretical[i] == experimental[i]:
+			positives += 1
+	error = abs(len(theoretical) - positives)/len(theoretical)
+	return error

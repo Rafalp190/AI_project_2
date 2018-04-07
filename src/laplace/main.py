@@ -35,6 +35,8 @@ test_classified = classify_messages(test_dataset.iloc[:,1].values, probs)
 test_dataset.insert(2,"test",test_classified)
 
 E = prediction_error(test_dataset.iloc[:,0].values, test_classified)
-print(E)
 
-test_dataset.to_csv("datasets/test_classified.csv", sep=",", index=False)
+print("Prediction Error\n", E)
+
+#FALTA ACOPLAR ESTO AL FORMATO QUE QUIERE SAMUEL
+test_dataset.to_csv("datasets/test_classified.txt", sep="\t", index=False)

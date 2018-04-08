@@ -2,7 +2,13 @@ from training import *
 from corpus_prep import *
 from clasification import *
 
-
+"""
+	LAPLACE SMOOTHING SPAM-HAM
+	Cross-validation execution for spam ham classifier 
+	author: Rafael Leon
+	date: 2018/03/29
+	standard: PEP-8
+"""
 crossval_dataset = read_corpus("datasets/crossval.csv", "\t")
 training_dataset = read_corpus("datasets/training.csv", "\t")
 

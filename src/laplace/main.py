@@ -2,13 +2,7 @@ from corpus_prep import *
 from training import *
 from clasification import *
 
-def prediction_error(theoretical, experimental) :
-	positives = 0
-	for i in range(len(theoretical)):
-		if theoretical[i] == experimental[i]:
-			positives += 1
-	error = abs(len(theoretical) - positives)/len(theoretical)
-	return error
+
 
 training_dataset = read_corpus("datasets/training.csv", "\t")
 test_dataset = read_corpus("datasets/test.csv", "\t")

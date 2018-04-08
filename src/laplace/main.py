@@ -26,11 +26,19 @@ probs = {'ham_prob': ham_prob,
 		'spam_prob_dict': spam_prob_dict}
 
 test_classified = classify_messages(test_dataset.iloc[:,1].values, probs)
-test_dataset.insert(2,"test",test_classified)
+
+messages = test_dataset.iloc[:,1].values
 
 E = prediction_error(test_dataset.iloc[:,0].values, test_classified)
-
+out_df = pd.DataFrame({'classification': test_classified, 'messages': messages})
+print('-----------------------------------------------')
+print('CLASSIFICATION OF SET OF MESSAGES')
+print('The classification was completed successfully')
+print('-----------------------------------------------')
+print('Information :')
+print('K :', k)
 print("Prediction Error\n", E)
+print('-----------------------------------------------')
+print('The messages were stored in output/test_classified.txt')
 
-#FALTA ACOPLAR ESTO AL FORMATO QUE QUIERE SAMUEL
-test_dataset.to_csv("datasets/test_classified.txt", sep="\t", index=False)
+out_df.to_csv("output/test_classified.txt", sep="\t", index=False)

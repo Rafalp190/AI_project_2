@@ -5,7 +5,7 @@ from clasification import *
 
 
 training_dataset = read_corpus("datasets/training.csv", "\t")
-test_dataset = read_corpus("datasets/test.csv", "\t")
+test_dataset = read_corpus("datasets/test_sms.txt", "\t")
 
 for i in range(len(test_dataset.iloc[:,1])):
 	clean = string_sanitizer(test_dataset.iloc[i,1])
@@ -33,7 +33,7 @@ test_classified = classify_messages(test_dataset.iloc[:,1].values, probs)
 
 messages = test_dataset.iloc[:,1].values 
 
-E = prediction_error(test_dataset.iloc[:,0].values, test_classified)
+#E = prediction_error(test_dataset.iloc[:,0].values, test_classified)
 out_df = pd.DataFrame({'classification': test_classified, 'message': messages})
 print('-----------------------------------------------')
 print('CLASSIFICATION OF SET OF MESSAGES')
@@ -41,9 +41,9 @@ print('The classification was completed successfully')
 print('-----------------------------------------------')
 print('Information :')
 print('K :', k)
-print("Prediction Error:", E)
+#print("Prediction Error:", E)
 print("Total Messages: ", len(test_classified))
-print("Incorrectly Classified: ", int(len(test_classified)*E))
+#print("Incorrectly Classified: ", int(len(test_classified)*E))
 print('-----------------------------------------------')
 print(out_df)
 print('The complete message output was stored in output/test_classified.txt')

@@ -31,7 +31,7 @@ probs = {'ham_prob': ham_prob,
 
 test_classified = classify_messages(test_dataset.iloc[:,1].values, probs)
 
-messages = test_dataset.iloc[:,1].values
+messages = test_dataset.iloc[:,1].values 
 
 E = prediction_error(test_dataset.iloc[:,0].values, test_classified)
 out_df = pd.DataFrame({'classification': test_classified, 'message': messages})

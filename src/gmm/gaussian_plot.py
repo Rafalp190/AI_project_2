@@ -17,9 +17,9 @@ import pylab as p
 	standard: PEP-8
 """
 
-coords = coordinate_file_reader("coordinates/coordinates.txt")
+coords = coordinate_file_reader("coordinates/test_gmm_4.txt")
 
-gaussians = random_GAUSSIANS(3)
+gaussians = random_GAUSSIANS(5)
 expectation_maximization(coords, gaussians, 1000)
 np.save("gaussians/clusters", gaussians)
 #print(gaussians)
@@ -28,8 +28,11 @@ y = np.arange(-500.0, 500.0, 1)
 X, Y = np.meshgrid(x, y)
 
 for i in gaussians:
+
 	sigma = i['sigma']
+	print('sigma\n', sigma)
 	mu = i['mu']
+	print('mu\n',mu)
 	Z = mlab.bivariate_normal(X, Y, sigma[0,0], sigma[1,1], mu[0], mu[1], sigma[0,1])
 
 	CS = plt.contour(X, Y, Z)

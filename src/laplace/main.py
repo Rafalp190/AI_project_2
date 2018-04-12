@@ -5,11 +5,12 @@ from clasification import *
 
 
 training_dataset = read_corpus("datasets/training.csv", "\t")
-test_dataset = read_corpus("datasets/test_sms.txt", "\t")
+file = open("datasets/test_sms.txt")
+test_dataset = file.readlines()
 
-for i in range(len(test_dataset.iloc[:,1])):
-	clean = string_sanitizer(test_dataset.iloc[i,1])
-	test_dataset.iloc[i,1] = clean
+# for i in range(len(test_dataset.iloc[:,1])):
+# 	clean = string_sanitizer(test_dataset.iloc[i,1])
+# 	test_dataset.iloc[i,1] = clean
 
 trainingHam = training_dataset[training_dataset.iloc[:,0] == "ham"]
 trainingSpam = training_dataset[training_dataset.iloc[:,0] == "spam"]
@@ -29,9 +30,9 @@ probs = {'ham_prob': ham_prob,
 		'ham_prob_dict': ham_prob_dict,
 		'spam_prob_dict': spam_prob_dict}
 
-test_classified = classify_messages(test_dataset.iloc[:,1].values, probs)
+test_classified = classify_messages(test_dataset, probs)
 
-messages = test_dataset.iloc[:,1].values 
+messages = test_dataset
 
 #E = prediction_error(test_dataset.iloc[:,0].values, test_classified)
 out_df = pd.DataFrame({'classification': test_classified, 'message': messages})
